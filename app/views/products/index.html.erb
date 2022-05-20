@@ -1,0 +1,6 @@
+<h1>All Products</h1>
+ <% @products.each do |product|  %>
+  <ul>
+    <li style="font-weight: bold">ID<%= link_to product.id, product_path(product)%>:  <%= link_to product.title, product_path(product) %></li>
+  </ul>
+<% end %>

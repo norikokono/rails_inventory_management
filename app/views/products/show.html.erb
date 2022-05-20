@@ -1,0 +1,63 @@
+<h1>Product Information</h1>
+<div class='shadow-sm p-3 mb-5 bg-white rounded overflow-wrap'>
+  <div class='clearfix'>
+    <h2 class='float-left'>
+      <span class='badge badge badge-dark shadow-lg'>
+        <%= @product.id %>
+      </span>
+      <%= @product.title %>
+    </h2>
+    <h3 class='float-right text-center shadow'>
+      <% if @product.sale_price.present? && @product.sale_price < @product.price %>
+        <span class='badge badge badge-light'><s><%= number_to_currency @product.price %></s></span>
+        <span class='badge badge badge-light'><%= number_to_currency @product.sale_price %></span>
+      <% else %>
+        <span class='badge badge badge-light'><%= number_to_currency @product.price %></span>
+      <% end %>
+    </h3>
+  </div>
+  <small class='text-muted'>
+    Created by <em><%= @product.user.full_name %></em>
+  <small>
+  <hr/>
+  <h4 class='shadow-none p-3 rounded'><%= @product.description %></h4>
+  <div>
+    <span class='shadow-none p-3 rounded'><%= @product.created_at %></span>
+    <%= link_to(
+      "Delete",
+      product_path(@product),
+      method: :delete,
+      class: 'btn btn-danger shadow-lg',
+      data: { confirm: 'are you sure?', turbo: false },
+      )
+    %>
+    <%= link_to "Edit", edit_product_path(@product), class: 'btn btn-info shadow'%>
+  </div>
+</div> 
+<h5 class='text-muted'>Leave a comment if you have any suggestion.</h5>
+<div class='shadow-sm p-3 mb-5 bg-white rounded'>
+  <%= form_with model: [@product, @review], local: true do |f| %>
+    <div class='form-group'>
+      <%= f.label :comments %>
+      <%= f.text_area(:body, class: 'form-control', placeholder: 'Your thoughts here' )%>
+    </div>
+    <%= f.submit "Creat Comment", class: 'btn btn-secondary shadow' %>
+  <% end %>
+</div>
+
+<h5> Here's what people are saying: </h5>
+<% @product.reviews.each do |review| %>
+  <div class='shadow p-3 mb-1 bg-white rounded'>   
+    <p>
+      <%= link_to(
+        "Delete",
+        product_review_path(@product, review),
+        method: :delete,
+        class: 'btn btn-secondary float-right shadow',
+        data: { confirm: 'delete this review?',  data: { turbo: false } },
+        )
+      %>
+    </p>
+    <p class='review-body text-muted'><%= review.body %></p>
+  </div>
+<% end %>

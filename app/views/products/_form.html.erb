@@ -1,0 +1,27 @@
+<% if @product.errors.any? %>
+<ul>
+  <% @product.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<div class="card" style="background-color: rgba(245, 245, 245, 0.5)">
+<%= form_for @product do |f| %>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+  <div>
+    <%= f.label :description %>
+    <%= f.text_area :description, class: "form-control"%>
+  </div>
+  <br />
+  <div>
+    <%= f.label :price %> 
+    <%= f.text_field :price, class: "form-control"%>
+  </div>
+  <br />
+  <%= f.submit(class: "btn btn-dark" ) %>
+<% end %>
+</div>

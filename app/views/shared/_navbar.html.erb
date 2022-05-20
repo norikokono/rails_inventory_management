@@ -1,0 +1,13 @@
+<%# mb-5 is bootstrap for setting the margin bottom to size 5 https://getbootstrap.com/docs/4.4/utilities/spacing/ %>
+<nav class='navbar navbar-light bg-light mb-5'>
+  <ul>
+    <span class='navbar-brand mt-3 mb-0 h1 '> Inventory Management &nbsp;&nbsp
+
+      <%= link_to 'Home', home_path, class: 'nav-item' %>
+      |
+      <%= link_to 'View Products', products_path, class: 'nav-item' %>
+      |
+      <%= link_to 'Add Product', new_product_path, class: 'nav-item' %>
+    </span>
+  </ul>
+</nav>
