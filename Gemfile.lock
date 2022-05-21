@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/faker-ruby/faker.git
+  revision: 7846d10edaa0786a7b7df707533dbc7e995d3299
+  branch: master
+  specs:
+    faker (2.21.0)
+      i18n (>= 1.8.11, < 2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -87,8 +95,6 @@ GEM
     digest (3.1.0)
     erubi (1.10.0)
     execjs (2.7.0)
-    faker (2.21.0)
-      i18n (>= 1.8.11, < 2)
     ffi (1.15.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
@@ -221,7 +227,7 @@ DEPENDENCIES
   cancancan (~> 3.2.0)
   cowsay (~> 0.3)
   debug
-  faker (~> 2.11)
+  faker!
   importmap-rails
   jbuilder
   jquery-rails
