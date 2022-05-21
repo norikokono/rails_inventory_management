@@ -76,9 +76,11 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   gem "spring"
 
-  # Note: if you are getting a uninitialized constant Faker::[some_class] error, your version of the gem is behind the one documented here. To make sure that your gem is the one documented here, change the line in your Gemfile to:
-  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
-
   gem 'cowsay', '~> 0.3'
 end
 
+# https://stackoverflow.com/questions/27452632/nameerror-uninitialized-constant-faker
+group :development, :test do
+   # Note: if you are getting a uninitialized constant Faker::[some_class] error, your version of the gem is behind the one documented here. To make sure that your gem is the one documented here, change the line in your Gemfile to:
+   gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+end
