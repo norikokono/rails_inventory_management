@@ -1,0 +1,13 @@
+#I am trying to fix Heroku's "error Comannd "webpack" not found."
+# https://github.com/rails/rails/blob/801b33a4812c937a7e726d4060e2e3e9361c56fa/railties/lib/rails/generators/rails/app/templates/bin/yarn
+
+VENDOR_PATH = File.expand_path('..', __dir__)
+Dir.chdir(VENDOR_PATH) do
+  begin
+    exec "yarnpkg #{ARGV.join(" ")}"
+  rescue Errno::ENOENT
+    $stderr.puts "Yarn executable was not detected in the system."
+    $stderr.puts "Download Yarn at https://yarnpkg.com/en/docs/install"
+    exit 1
+  end
+end
