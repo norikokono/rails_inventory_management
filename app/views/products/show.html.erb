@@ -51,10 +51,10 @@
     <p>
       <%= link_to(
         "Delete",
-        product_review_path(@product, review),
+        review_path(@product, review),
         method: :delete,
         class: 'btn btn-secondary float-right shadow',
-        data: { confirm: 'delete this review?',  data: { turbo: false } },
+        data: { confirm: 'delete this review?', turbo: false },
         )
       %>
     </p>

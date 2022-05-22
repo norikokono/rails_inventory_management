@@ -37,13 +37,12 @@ end
 
 users = User.all
 
-a = 1
   NUM_OF_PRODUCTS.times do |x|
     created_at = Faker::Date.backward(days: 365)
-    a += 1 
     product = Product.create({
-      title: Faker::Hipster.sentence + a.to_s,
+      title: "#{Faker::Commerce.product_name}-#{rand(1_000_000_000)}",
       description: Faker::Hipster.paragraph,
+      price: Faker::Commerce.price,
       user: users.sample,
       created_at: created_at,
       updated_at: created_at

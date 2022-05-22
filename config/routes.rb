@@ -1,14 +1,24 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+ 
+  root 'welcome#home'
+  get('/home', to: 'welcome#home')
+  
+  # Session Routes
+  resource :session, only: [:new, :create, :destroy]
 
-    root 'welcome#home'
-    get('/home', to: 'welcome#home')
-    
-    resources :users, ony: [:new, :create]
-    resource :user, only: [:edit, :update]
-    resource :session, only: [:new, :create, :destroy]
+  # RESTful Product Routes
+  #  get '/products/new', to: 'products#new', as: :new_product
+  #  post '/products', to: 'products#create'
+  #  get '/products/:id', to: 'products#show', as: :product
+  #  get '/products', to: 'products#index'
+     delete '/products/:id', to: 'products#destroy'
+  #  get '/products/:id/edit', to: 'products#edit', as: :edit_product
+  #  patch '/products/:id', to: 'products#update'
 
-    resources :products do
-      resources :reviews, only: [:create, :destroy] 
+  resources :products do
+    resources :reviews, shallow: :true, only: [:create, :destroy] do
+    end
   end
+
+  resources :users, only: [:new, :create]
 end
