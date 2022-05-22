@@ -8,8 +8,9 @@ require_relative '../lib/stdout_helpers'
 #   Character.create(name: 'Luke', movie: movies.first)
 
 NUM_OF_USERS = 20
-NUM_OF_PRODUCTS = 30
+NUM_OF_PRODUCTS = 100
 NUM_OF_REVIEWS = 3
+
 PASSWORD = 'supersecret'
 
 Review.destroy_all()
@@ -20,7 +21,8 @@ super_user = User.create(
   first_name: 'jon',
   last_name: 'snow',
   email: 'js@winterfell.gov',
-  password: PASSWORD
+  password: PASSWORD,
+  admin: true
 )
 
 NUM_OF_USERS.times do |x|
@@ -35,29 +37,33 @@ end
 
 users = User.all
 
-NUM_OF_PRODUCTS.times do |x|
-  created_at = Faker::Date.backward(days: 365)
-  product = Product.create({
-    title: "#{Faker::Commerce.product_name}-#{rand(1_000_000_000)}",
-    description: Faker::Hipster.paragraph(sentence_count: 2, supplemental: true),
-    price: Faker::Commerce.price,
-    user: users.sample,
-    created_at: created_at,
-    updated_at: created_at
-  })
+a = 1
+  NUM_OF_PRODUCTS.times do |x|
+    created_at = Faker::Date.backward(days: 365)
+    a += 1 
+    product = Product.create({
+      title: Faker::Hipster.sentence + a.to_s,
+      description: Faker::Hipster.paragraph,
+      user: users.sample,
+      created_at: created_at,
+      updated_at: created_at
+    })
+
   NUM_OF_REVIEWS.times do
-    review = Review.create({
-        body: Faker::Hacker.say_something_smart,
-        product: product,
-        user: users.sample
-      })
-    end
+    Review.create({
+      body: Faker::Hacker.say_something_smart,
+      product: product,
+      user: users.sample
+    })
+  end
   Stdout.progress_bar(NUM_OF_PRODUCTS, x, "█") { "Creating Products with Reviews" }
 end
+
+
 
 products = Product.all
 reviews = Review.all
 
-# puts Cowsay.say("Generated #{products.count} products with #{NUM_OF_REVIEWS} reviews each!", :Turkey)
-# puts Cowsay.say("Created #{users.count}  users!", :turtle)
 
+puts Cowsay.say("Created #{products.count} products with #{NUM_OF_REVIEWS} reviews each!", :turtle)
+puts Cowsay.say("Created #{users.count}  users!", :turkey)
