@@ -85,3 +85,4 @@ group :development, :test, :production do
    gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 end
   
+gem "hotwire-rails", "~> 0.1.3"

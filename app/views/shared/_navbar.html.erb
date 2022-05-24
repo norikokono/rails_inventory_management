@@ -10,4 +10,13 @@
       <%= link_to 'Add Product', new_product_path, class: 'nav-item' %>
     </span>
   </ul>
+  <div>
+    <% if user_signed_in? %>
+      <span class='text-muted mr-3'><h5>Hello ♡  <%= current_user.full_name %></span> &nbsp;&nbsp;
+      <%= link_to "Log Out", session_path, method: :delete, class: 'btn btn-secondary' %></h5>
+    <% else %>
+      <%= link_to "Log In", new_session_path, class: 'btn btn-dark' %>
+      <%= link_to "Sign Up", new_user_path, class: 'btn btn-secondary' %>
+    <% end %>
+  </div>
 </nav>
