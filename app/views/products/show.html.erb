@@ -51,7 +51,7 @@
     <p>
       <%= button_to(
         "Delete",
-        review_path(@product, review),
+        review_path(@product),
         method: :delete,
         class: 'btn btn-secondary float-right shadow-lg',
         form: {data: {turbo_confirm: 'Are you sure?'}}
