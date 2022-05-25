@@ -4,5 +4,3 @@ import "controllers"
 
 require("@rails/ujs").start()
 
-//= require jquery
-//= require jquery_ujs

@@ -49,12 +49,12 @@
 <% @product.reviews.each do |review| %>
   <div class='shadow p-3 mb-1 bg-white rounded'>   
     <p>
-      <%= link_to(
+      <%= button_to(
         "Delete",
         review_path(@product, review),
         method: :delete,
         class: 'btn btn-secondary float-right shadow',
-        data: { confirm: 'delete this review?', turbo: false },
+        form: {data: {turbo_confirm: 'Are you sure?'}}
         )
       %>
     </p>
