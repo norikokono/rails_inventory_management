@@ -76,7 +76,7 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   gem "spring"
 
-  gem 'cowsay', '~> 0.3'
+  # gem 'cowsay', '~> 0.3'
 end
 
 # 全運用環境によるグループを作成
