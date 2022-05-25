@@ -21,17 +21,17 @@
   <small>
   <hr/>
   <h4 class='shadow-none p-3 rounded'><%= @product.description %></h4>
+  <span class='shadow-none p-3'><%= @product.created_at %></span>
   <div>
-    <span class='shadow-none p-3 rounded'><%= @product.created_at %></span>
     <%= button_to(
       "Delete",
       product_path(@product),
       method: :delete,
-      class: 'btn btn-danger float-left shadow-lg mr-1ls',
+      class: 'btn btn-danger float-left shadow-lg mr-2 mt-1',
       form: {data: {turbo_confirm: 'Are you sure?'}}
       )
     %>
-    <%= link_to "Edit", edit_product_path(@product), class: 'btn btn-info shadow'%>
+    <%= link_to "Edit", edit_product_path(@product), class: 'btn btn-info shadow-lg mt-1'%>
   </div>
 </div> 
 <h5 class='text-muted'>Leave a comment if you have any suggestion.</h5>
