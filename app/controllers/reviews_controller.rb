@@ -17,9 +17,12 @@ class ReviewsController < ApplicationController
   end
   
   def destroy
-    @review.destroy
+    if @review.destroy
     redirect_to product_path(@review.product), notice: "Review deleted successfully."
-  end
+    else
+      render 'destroy', status: :unprocessable_entity
+    end
+end
 
   private
 

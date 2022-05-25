@@ -23,12 +23,12 @@
   <h4 class='shadow-none p-3 rounded'><%= @product.description %></h4>
   <div>
     <span class='shadow-none p-3 rounded'><%= @product.created_at %></span>
-    <%= link_to(
+    <%= button_to(
       "Delete",
       product_path(@product),
       method: :delete,
-      class: 'btn btn-danger shadow-lg',
-      data: { confirm: 'are you sure?', turbo: false },
+      class: 'btn btn-danger float-left shadow-lg',
+      form: {data: {turbo_confirm: 'Are you sure?'}}
       )
     %>
     <%= link_to "Edit", edit_product_path(@product), class: 'btn btn-info shadow'%>
@@ -53,7 +53,7 @@
         "Delete",
         review_path(@product, review),
         method: :delete,
-        class: 'btn btn-secondary float-right shadow',
+        class: 'btn btn-secondary float-right shadow-lg',
         form: {data: {turbo_confirm: 'Are you sure?'}}
         )
       %>
