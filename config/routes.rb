@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   #  get '/products/:id/edit', to: 'products#edit', as: :edit_product
   #  patch '/products/:id', to: 'products#update'
   delete '/reviews/:id' => 'reviews#destroy'
+  
+  # https://stackoverflow.com/questions/71882837/redirect-in-destroy-action-not-working-properly
+  get 'session' => :destroy, to: 'sessions#destroy'
 
   resources :products do
     resources :reviews, shallow: :true, only: [:create, :destroy] do
