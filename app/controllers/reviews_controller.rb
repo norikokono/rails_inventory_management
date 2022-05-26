@@ -4,8 +4,8 @@ class ReviewsController < ApplicationController
   before_action :authorize_user!, only: [:destroy]
 
   def create
-    @product = Product.find params[:idea_id]
-    @review = Review.new params.require(:review).permit(:rating, :body)
+    @product = Product.find params[:product_id]
+    @review = Review.new params.require(:review).permit(:body)
     @review.product = @product
     @review.user = @current_user
     
