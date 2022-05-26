@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-  # https://edgeapi.rubyonrails.org/classes/ActiveSupport/Rescuable/ClassMethods.html
+  # https://edgeapi.rubyonrails.org/classes/ActiveSupport/Rescuable/ClassMethods.htmlad
   rescue_from 'MyAppError::Base' do |exception|
     render xml: exception, status: 500
   end
