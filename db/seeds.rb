@@ -64,5 +64,5 @@ products = Product.all
 reviews = Review.all
 
 
-# puts Cowsay.say("Created #{products.count} products with #{NUM_OF_REVIEWS} reviews each!", :turtle)
-# puts Cowsay.say("Created #{users.count}  users!", :turkey)
+puts Cowsay.say("Created #{products.count} products with #{NUM_OF_REVIEWS} reviews each!", :turtle)
+puts Cowsay.say("Created #{users.count}  users!", :turkey)
